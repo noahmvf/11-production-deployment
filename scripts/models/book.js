@@ -1,6 +1,5 @@
-let ENV = {
-  location: location.protocol === 'https:'
-  cloudAPI: 'https://ni-ag-booklist.herokuapp.com'
-  localAPI: 'localhost:8080'
-  APIurl: ENV.location ? ENV.cloudAPI : ENV.localAPI
-};
+const ENV = {}
+  ENV.location = location.protocol === 'https:',
+  ENV.cloudAPI = 'https://ni-ag-booklist.herokuapp.com',
+  ENV.localAPI = 'localhost:8080',
+  ENV.APIurl = ENV.location ? ENV.cloudAPI : ENV.localAPI
