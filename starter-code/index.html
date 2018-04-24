@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Its Alive</title>
+</head>
+<body>
+<main>
+    Hello World
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+  (function(){
+    $.getJSON("https://swapi.co/api/starships")
+    .then(ships => console.log(ships))
+    .catch( console.error );
+  })();
+</script>
+</body>
+</html>
