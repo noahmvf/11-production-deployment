@@ -20,16 +20,27 @@ var app = app || {};
     return template (this);
   };
 
-  Book.loadAll = rows => {
-    // rows.sort((a, b) => (new Book (b.title) - (new Book (a.title) )))
+  Book.loadAll = (rows) => {
+    rows.sort((a, b) => (new Book (b.title) - (new Book (a.title) )));
     Book.all = rows.map(row => new Book(row));
+  };
+  
+  Book.fetchAll = (callback) => {
+    $.get(`${ENV.APIurl}/api/v1/books`)
+      .then(results => {
+        Book.loadAll(results)
+        .then(callback)
+        .catch(errorCallback);
+      })
   };
 
   //function if we encounter an error, it is the equivalent to generating a 404 error message on a page
   function errorCallback(err) {
     console.error(err);
     module.errorView.initErrorPage(err);
-  } // our errorView will be a separate JS file
+  } 
+  
+  // our errorView will be a separate JS file
     // we'll need ot empty the errors or else we will always be loading a page with errors
 
 // errorView.initErrorPage = err => {
