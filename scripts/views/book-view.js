@@ -13,3 +13,7 @@
   module.bookView = bookView;
   bookView.initIndexPage();
 })(app);
+
+$(document).ready(function () {
+  app.Book.fetchAll(app.bookView.initIndexPage);
+})

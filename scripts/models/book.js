@@ -5,7 +5,7 @@ var app = app || {};
   const ENV = {}
     ENV.location = location.protocol === 'https:',
     ENV.cloudAPI = 'https://ni-ag-booklist.herokuapp.com',
-    ENV.localAPI = 'localhost:8080',
+    ENV.localAPI = 'http://localhost:3000',
     ENV.APIurl = ENV.location ? ENV.cloudAPI : ENV.localAPI
 
   //TODO: we want to refactor this as an IFFE, if we haven't already
@@ -27,18 +27,16 @@ var app = app || {};
   
   Book.fetchAll = (callback) => {
     $.get(`${ENV.APIurl}/api/v1/books`)
-      .then(results => {
-        Book.loadAll(results)
+      .then(Book.loadAll)
         .then(callback)
-        .catch(errorCallback);
-      })
+        .catch(console.log('error'));
   };
 
   //function if we encounter an error, it is the equivalent to generating a 404 error message on a page
-  function errorCallback(err) {
-    console.error(err);
-    module.errorView.initErrorPage(err);
-  } 
+  // function errorCallback(err) {
+  //   console.error(err);
+  //   module.errorView.initErrorPage(err);
+  // } 
   
   // our errorView will be a separate JS file
     // we'll need ot empty the errors or else we will always be loading a page with errors
