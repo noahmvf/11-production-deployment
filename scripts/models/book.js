@@ -1,12 +1,12 @@
 'use strict';
 var app = app || {};
 
-( function () {
-const ENV = {}
-  ENV.location = location.protocol === 'https:',
-  ENV.cloudAPI = 'https://ni-ag-booklist.herokuapp.com',
-  ENV.localAPI = 'localhost:8080',
-  ENV.APIurl = ENV.location ? ENV.cloudAPI : ENV.localAPI
+( function (module) {
+  const ENV = {}
+    ENV.location = location.protocol === 'https:',
+    ENV.cloudAPI = 'https://ni-ag-booklist.herokuapp.com',
+    ENV.localAPI = 'localhost:8080',
+    ENV.APIurl = ENV.location ? ENV.cloudAPI : ENV.localAPI
 
   //TODO: we want to refactor this as an IFFE, if we haven't already
   function Book (bookObj) {
@@ -17,11 +17,11 @@ const ENV = {}
 
   Book.prototype.toHtml = function () {
     let template = Handlebars.compile($('#book-list-template').text());
-    return template ('asidfjoiwjef');
+    return template (this);
   };
 
   Book.loadAll = rows => {
-    rows.sort((a, b) => (new Book (b.title) - (new Book (a.title) ))
+    // rows.sort((a, b) => (new Book (b.title) - (new Book (a.title) )))
     Book.all = rows.map(row => new Book(row));
   };
 
@@ -54,4 +54,7 @@ const ENV = {}
   // }
   
   //.catch catches any errors for us
-} )();
+
+  module.Book = Book;
+
+} )(app);
