@@ -15,6 +15,11 @@
     <img src= {{"imageUrl"}} alt="bookImage">
   </script>
 
+  <script type="text/x-handlebars-template" id = "error-template">
+    <p></p>
+  </script>
+
+
  </head>
 
    <body>
@@ -24,18 +29,18 @@
      </header>
      <main>
        
-       <section id = 'book-view container' class = 'container'>
+       <section id ="book-view" class= "container">
           <h2>my books</h2> 
           <ul id="book-list">
           </ul>
         </section>
 
-         <section class = "about-view container">
+         <section class = "about-view" class="container">
            <p>This is the place where our about us would live. </p>
          </section>
 
-         <section id = 'error-view-container'class = 'container'>
-          <h2>error</h2>
+         <section class = 'error-view container'>
+          <h2 id = "error-message">error message</h2>
          </section>
          
          <footer>
@@ -47,5 +52,6 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
    <script src="scripts/models/book.js"></script>
    <script src="scripts/views/book-view.js"></script>
+   <script src="scripts/views/error-view.js"></script>
  </body>
 </html>

@@ -29,14 +29,14 @@ var app = app || {};
     $.get(`${ENV.APIurl}/api/v1/books`)
       .then(Book.loadAll)
         .then(callback)
-        .catch(console.log('error'));
+        .catch(errorCallback);
   };
 
   //function if we encounter an error, it is the equivalent to generating a 404 error message on a page
-  // function errorCallback(err) {
-  //   console.error(err);
-  //   module.errorView.initErrorPage(err);
-  // } 
+  function errorCallback(err) {
+    console.error(err);
+    module.errorView.initErrorPage(err);
+  } 
   
   // our errorView will be a separate JS file
     // we'll need ot empty the errors or else we will always be loading a page with errors
