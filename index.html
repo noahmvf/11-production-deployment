@@ -5,26 +5,25 @@
    <link rel="stylesheet" href="styles/layout.css">
    <link rel="stylesheet" href="styles/reset.css">
    <link rel="stylesheet" href="styles/modules.css">
+
+   <script type="text/x-handlebars-template" id = "book-list-template">
+    <p>{{bookCount}}</p>
+    <ul>
+      <li>{{author}}</li>
+      <li>{{title}}</li>
+    </ul>
+    <img src="" alt="bookImage">
+  </script>
+
  </head>
+
    <body>
-     <header>
+    <header>
        <img src="" alt="CodeFellows logo">
        <h1>books app</h1>
      </header>
      <main>
        <h2>my books</h2>
-         <section id = "book-container">
-           <p>{{bookcount}}</p>
-           <ul>
-             <li>{{author}}</li>
-             <li>{{title}}</li>
-           </ul>
-           <img src="" alt="bookImage">
-           <div>
-             <h3>book title</h3>
-             <p>author</p>
-           </div>
-         </section>
          <section class = "about-view">
            <p>This is the place where our about us would live. </p>
          </section>
@@ -34,5 +33,6 @@
          </footer>
      </main>
    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+   <script src="scripts/models/book.js"></script>
  </body>
 </html>
